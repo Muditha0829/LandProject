@@ -3,13 +3,8 @@ import axios from "axios";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { Button } from "@mui/material";
-import React from "react";
-// import jsPDF from "jspdf";
+import jsPDF from "jspdf";
 // import 'jspdf-autotable';
-
-import Pdf from "react-to-pdf";
-
-const ref = React.createRef();
 
 function Profile(){
     
@@ -20,6 +15,30 @@ function Profile(){
     const userDetails = {margin:"20px",float:"left"};
     const dataContainer = {display:"flex",marginLeft:"50px",marginRight:"50px",justifyContent:"center"};
 
+
+   const exportPdf=()=>{
+    const unit = "pt";
+        const size = "A4"; 
+        const orientation = "potrait";
+    
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+    
+        doc.setFontSize(15);
+    
+        const title = "Email: " + user.email;
+    
+        const data = "Data";
+    
+        let content = {
+          startY: 50,
+          body: data
+        };
+    
+        doc.text(data,marginLeft, 40);
+        // doc.autoTable(content);
+        doc.save("Report.pdf")
+   }
 
     useEffect(()=>{
         const loggedInUserId = localStorage.getItem("userId");
@@ -52,7 +71,7 @@ function Profile(){
                 </div>
 
 
-                <div style={userDetails} ref={ref}>
+                <div style={userDetails}>
                     <Box sx={{ width: '100%', maxWidth: 500 }}>
                         <Typography variant="h5" gutterBottom component="div">
                             {loggedInUser}
@@ -117,11 +136,7 @@ function Profile(){
                     </Box>
 
                     <Button variant="text" href={"updateprofile"}> Update Profile </Button>
-
-                    <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <Button variant="text" onClick={toPdf}> Generate User Report </Button>}
-      </Pdf>
-                    
+                    <Button variant="text" onClick={exportPdf}> Generate User Report </Button>
                 </div>
 
             </div>
