@@ -3,6 +3,7 @@ import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material
 import axios from 'axios';
 import LoginNav from './LoginNav/LoginNav';
 
+import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
 
 const paperStyle={padding:20, height:'auto', width:400, margin:'50px auto'};
@@ -99,7 +100,9 @@ const SignIn = () =>{
         </Typography>
         </div>
         
+        
       </Paper>
+      <Footer/>
     </Grid>
     )
 
