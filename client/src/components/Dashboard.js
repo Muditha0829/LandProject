@@ -1,4 +1,5 @@
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 import { useEffect,useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Logout from "./Logout";
@@ -43,7 +44,7 @@ const Dashboard=()=>{
                 {/* <Route path="/editprofile" element={<EditProfile/>}/> */}
 
             </Routes>
-
+        <Footer/>
         </div>
     )
 }
