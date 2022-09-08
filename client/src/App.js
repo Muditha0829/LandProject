@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SignUp from "./components/login/SignUp";
 import Dashboard from "./components/Dashboard";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
 
       </Routes>
       </BrowserRouter>
+    
   );
 }
 
