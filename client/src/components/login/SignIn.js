@@ -71,7 +71,7 @@ const SignIn = () =>{
         </Grid>
 
         <form onSubmit={handleSubmit}>
-        <TextField label="Enter SLIIT Email Address" type="text" name="email" fullWidth required style={textStyle} value={credentials.email}
+        <TextField label="Enter Your Email Address" type="text" name="email" fullWidth required style={textStyle} value={credentials.email}
          onChange={handleChange} />
         <TextField label="Password"  type="password" name="password" fullWidth required style={textStyle} value={credentials.password}
          onChange={handleChange}/>
