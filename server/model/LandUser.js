@@ -1,10 +1,10 @@
 // LandUs3r T3mplat3
 
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
-const jwt = require('jsonwebtoken');
-const passwordComplexity = require('joi-password-complexity');
-const Joi = require('joi');
+import jwt from "jsonwebtoken";
+import passwordComplexity from "joi-password-complexity";
+import Joi from "joi";
 
 const landUsersSchema = new Schema({ 
     firstName:{
@@ -67,5 +67,5 @@ const validate = (data) =>{
     });
     return schema.validate(data);
 }
-module.exports = {LandUser,validate};
+export { LandUser, validate };
 
