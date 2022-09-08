@@ -35,7 +35,7 @@ function Profile(){
           body: data
         };
     
-        doc.text(data,marginLeft, 40);
+        doc.text(title,marginLeft, 40);
         // doc.autoTable(content);
         doc.save("Report.pdf")
    }
