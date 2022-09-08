@@ -1,9 +1,15 @@
 // LandUs3r Rout3 T3mplat3
 
-const router = require("express").Router();
-let {LandUser,validate} = require('../model/LandUser');
-const bcrypt = require('bcrypt');
-const crypto = require('crypto');
+// const router = require("express").Router();
+// let {LandUser,validate} = require('../model/LandUser');
+// const bcrypt = require('bcrypt');
+// const crypto = require('crypto');
+
+import express from "express";
+const router = express.Router();
+import { LandUser, validate } from "../model/LandUser.js";
+import bcrypt from "bcrypt";
+import crypto from "crypto";
 
 //Create a User
 router.post('/add',async (req,res)=>{
@@ -120,4 +126,4 @@ router.route('/:id').get((req,res)=>{
     })
 })
 
-module.exports = router;
+export default router;

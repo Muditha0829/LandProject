@@ -1,7 +1,8 @@
-const router = require('express').Router();
-const { LandUser } = require('../model/LandUser');
-const Joi = require("joi")
-const bcrypt = require('bcrypt');
+import express from "express";
+const router = express.Router();
+import { LandUser } from "../model/LandUser.js";
+import Joi from "joi";
+import bcrypt from "bcrypt";
 
 router.post('/',async (req,res)=>{
     try{
@@ -97,5 +98,4 @@ router.route("/checkpw").post(async (req,res)=>{
 })
 
 
-
-module.exports = router;
+export default router;
