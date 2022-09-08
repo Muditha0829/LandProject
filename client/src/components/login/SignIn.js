@@ -3,7 +3,6 @@ import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material
 import axios from 'axios';
 import LoginNav from './LoginNav/LoginNav';
 
-// import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
 import { useNavigate } from 'react-router-dom';
 
 const paperStyle={padding:20, height:'auto', width:400, margin:'50px auto'};
@@ -102,7 +101,6 @@ const SignIn = () =>{
         
       </Paper>
     </Grid>
-      
     )
 
 }

@@ -8,7 +8,6 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-      {/* <Route path="/" element={<Hello/>}/> */}
 
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/signup" element={<SignUp/>}/>
@@ -17,6 +16,7 @@ function App() {
 
       </Routes>
       </BrowserRouter>
+  
     
   );
 }

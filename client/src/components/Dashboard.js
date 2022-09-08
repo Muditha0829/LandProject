@@ -18,7 +18,7 @@ const Dashboard=()=>{
         if (!loggedInUser){
         window.location = "/signin"
         }else{
-            const username = (JSON.parse(loggedInUser)).toUpperCase();
+            const username = (JSON.parse(loggedInUser));
             setusername(username);
         }
 
@@ -27,7 +27,7 @@ const Dashboard=()=>{
     return(
 
 
-        <div style={{ backgroundImage: `url("https://wallpaperaccess.com/full/1831078.jpg")`,backgroundSize: 'cover',backgroundRepeat:'no-repeat',
+        <div style={{ backgroundImage: `url("http://www.webdesignhot.com/wp-content/uploads/2016/10/Gradient-Blue-Color-and-Triangle-Polygon-Pattern-Background.jpg")`,backgroundSize: 'cover',backgroundRepeat:'no-repeat',
         width: '100vw',
         height: '100vh'}} >
         <NavBar name={username}/>
