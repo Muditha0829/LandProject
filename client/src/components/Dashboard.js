@@ -8,6 +8,10 @@ import Profile from "./Profile";
 import UpdateProfile from "./UpdateProfile";
 import DeleteProfile from "./DeleteProfile";
 
+import AddSale from "./sale/AddSale";
+import SaleList from "./sale/SaleList";
+import MainPageSale from "./sale/main";
+
 const Dashboard=()=>{
     const [username, setusername] = useState([]);
 
@@ -39,6 +43,11 @@ const Dashboard=()=>{
                 <Route path="/logout" element={<Logout/>}/>
                 <Route path="/updateprofile" element={<UpdateProfile/>}/>
                 <Route path="/deleteprofile" element={<DeleteProfile/>}/>
+
+                
+                <Route path="/addSale" element={<AddSale/>}/>
+                <Route path="/saleList" element={<SaleList/>}/>
+                <Route path="/main-page" element={<MainPageSale/>}/>
 
                 {/* <Route path="/logout" element={<Logout />} /> */}
                 {/* <Route path="/editprofile" element={<EditProfile/>}/> */}
