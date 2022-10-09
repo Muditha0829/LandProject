@@ -28,7 +28,7 @@ const NavBar = ({name}) => {
         console.log(userRole)
 
 const pages = ['Profile', 'Rentals'];
-const settings = ['Profile', 'Dashboard', 'Logout',`${(userRole)==='admin' ? 'Admin Settings' : ''}`];
+const settings = ['Profile', 'Dashboard', 'Logout',`${(userRole)==='SystemUser' ? 'Admin Settings' : ''}`];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);

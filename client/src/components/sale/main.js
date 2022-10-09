@@ -1,6 +1,6 @@
-import { Button, Grid, Paper, Stack } from "@mui/material";
+import { Button, Grid, Stack } from "@mui/material";
 import { Box } from "@mui/system";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 
 const MainPageSale = () => {

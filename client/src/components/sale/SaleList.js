@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { DataGrid,  } from '@mui/x-data-grid';
+import { Link } from 'react-router-dom';
+import { DataGrid} from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 
@@ -14,9 +14,9 @@ const updateUpUser= (event,userId) =>{
     console.log("Pressed Up")
 }
 
-const updateDownUser= (event,userId) =>{
-console.log("Pressed Down")
-}
+// const updateDownUser= (event,userId) =>{
+// console.log("Pressed Down")
+// }
 
 const columns = [
 { field: 'SaleId', headerName: 'Sale ID', width: 200 },

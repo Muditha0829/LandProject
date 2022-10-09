@@ -11,6 +11,7 @@ import DeleteProfile from "./DeleteProfile";
 import AddSale from "./sale/AddSale";
 import SaleList from "./sale/SaleList";
 import MainPageSale from "./sale/main";
+import AdminSettings from "./AdminSettings";
 
 const Dashboard=()=>{
     const [username, setusername] = useState([]);
@@ -43,6 +44,7 @@ const Dashboard=()=>{
                 <Route path="/logout" element={<Logout/>}/>
                 <Route path="/updateprofile" element={<UpdateProfile/>}/>
                 <Route path="/deleteprofile" element={<DeleteProfile/>}/>
+                <Route path="/Admin%20Settings" element={<AdminSettings/>}/>
 
                 
                 <Route path="/addSale" element={<AddSale/>}/>

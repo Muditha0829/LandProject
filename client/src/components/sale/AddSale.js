@@ -2,12 +2,12 @@ import React, { useEffect,useState } from "react";
 import {  Button, Grid, Paper, TextField } from "@mui/material";
 import axios from "axios";
 // import Background from './../../images/Group/group_background_image.png';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 
 const paperStyle={backgroundColor: "#bbd9f7", padding:50, height:'auto', width:700, margin:'30px auto'};
-const textStyle={ height:35, width:500};
+// const textStyle={ height:35, width:500};
 const btnStyle={margin:'20px 0'};
-const text={fontFamily: "Cursive"};
+// const text={fontFamily: "Cursive"};
 const fromun = {margin:'30px auto'};
 
  function AddSale(){
@@ -61,6 +61,7 @@ const fromun = {margin:'30px auto'};
         }else{
             const username = (JSON.parse(loggedInUserId));
             setuserId(userId);
+            console.log(username);
 
         }
 
