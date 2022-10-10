@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import Button from '@mui/material/Button';
+import { Button} from "@mui/material";
 import axios from 'axios';
+import { jsPDF } from "jspdf";
+import 'jspdf-autotable';
 
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -133,12 +135,39 @@ function AdminSettings() {
     axios.get("http://localhost:4500/user").then((res) => 
     setTableData((res.data)))
 
+    const exportPdf = () => {
+        const unit = "pt";
+        const size = "A4"; 
+        const orientation = "landscape";
+    
+        const marginLeft = 40;
+        const doc = new jsPDF(orientation, unit, size);
+    
+        doc.setFontSize(15);
+    
+        const title = "User Report";
+        const headers = [["UserId", "Full Name" , "City", "Province","E-Mail", "Role"]];
+    
+        const data = tableData.map(user=>  [user._id, user.firstName +" "+ user.lastName , user.city, user.province, user.email, user.role]);
+    
+        let content = {
+          startY: 50,
+          head: headers,
+          body: data
+        };
+    
+        doc.text(title, marginLeft, 40);
+        doc.autoTable(content);
+        doc.save("User Report.pdf")
+      }
+    
+
     
 
   return (
       <div>
           
-          <center><h3>User Table</h3></center>
+          <div><h3>User Maagement Table</h3></div>
       
     <div style={{ height: 500, width: "auto" }}>
 
@@ -151,6 +180,9 @@ function AdminSettings() {
         // customToolbarSelect
       />
     </div>
+
+
+    <Button color="primary" variant="outlined" fullWidth onClick={exportPdf}>Generate User Report </Button>
     </div>
   );
 }
