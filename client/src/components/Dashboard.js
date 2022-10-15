@@ -64,7 +64,7 @@ const Dashboard=()=>{
                 <Route path="/all-rental" element={<ViewRentals/>}/>
                 <Route path="/update-rental/:id" element={<UpdateRental/>}/>
                 <Route path="/single-rental/:id" element={<SingleRental/>}/>
-                <Route path="/Rental-Menu" element={<MainPageRental/>}/>
+                <Route path="/Rentals" element={<MainPageRental/>}/>
 
                 {/* <Route path="/logout" element={<Logout />} /> */}
                 {/* <Route path="/editprofile" element={<EditProfile/>}/> */}
