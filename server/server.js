@@ -17,10 +17,12 @@ app.use(bodyParser.json());
 
 import landuser from "./routes/LandUserRoute.js";
 import authRoutes from "./routes/AuthRoute.js";
+import rentalRoutes from "./routes/RentalRoute.js";
 
 //Using Routes
 app.use("/user",landuser);
 app.use("/auth", authRoutes);
+app.use("/rental", rentalRoutes);
 
 //Establishing connection between server and DB
 const URL = process.env.MONGODB_URL;
