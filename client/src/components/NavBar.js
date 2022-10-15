@@ -11,7 +11,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import { Link } from 'react-router-dom';
 
@@ -28,8 +27,9 @@ const NavBar = ({name}) => {
         const userRole = JSON.parse(loggedInUserRole);
         console.log(userRole)
 
-const pages = ['Topic 1', 'Topic 2', 'Topic 3', 'Topic 4', 'Topic 5'];
-const settings = ['Profile', 'Dashboard', 'Rental-Menu', 'Logout',`${(userRole)==='admin' ? 'Admin Settings' : ''}`];
+
+const pages = ['Profile', 'Rentals'];
+const settings = ['Profile', 'Dashboard', 'Logout',`${(userRole)==='SystemUser' ? 'Admin Settings' : ''}`];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -119,7 +119,7 @@ const settings = ['Profile', 'Dashboard', 'Rental-Menu', 'Logout',`${(userRole)=
             </Menu>           
           </Box>
           
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <DashboardIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             style={TopicStyles}
             variant="h5"

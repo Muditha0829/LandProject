@@ -9,11 +9,11 @@ import UpdateRental from "./components/rental-management/UpdateRental";
 import SingleRental from "./components/rental-management/SingleRental";
 import MainPageRental from "./components/rental-management/MainPageRental";
 
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-      {/* <Route path="/" element={<Hello/>}/> */}
 
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/signup" element={<SignUp/>}/>
@@ -25,6 +25,8 @@ function App() {
 
       </Routes>
       </BrowserRouter>
+  
+    
   );
 }
 

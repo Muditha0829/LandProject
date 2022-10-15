@@ -3,7 +3,7 @@ import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material
 import axios from 'axios';
 import LoginNav from './LoginNav/LoginNav';
 
-// import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
+import Footer from '../Footer';
 import { useNavigate } from 'react-router-dom';
 
 const paperStyle={padding:20, height:'auto', width:400, margin:'50px auto'};
@@ -71,7 +71,7 @@ const SignIn = () =>{
         </Grid>
 
         <form onSubmit={handleSubmit}>
-        <TextField label="Enter SLIIT Email Address" type="text" name="email" fullWidth required style={textStyle} value={credentials.email}
+        <TextField label="Enter Your Email Address" type="text" name="email" fullWidth required style={textStyle} value={credentials.email}
          onChange={handleChange} />
         <TextField label="Password"  type="password" name="password" fullWidth required style={textStyle} value={credentials.password}
          onChange={handleChange}/>
@@ -100,9 +100,10 @@ const SignIn = () =>{
         </Typography>
         </div>
         
+        
       </Paper>
+      <Footer/>
     </Grid>
-      
     )
 
 }

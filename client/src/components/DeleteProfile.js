@@ -1,7 +1,7 @@
 import  {useState,useEffect} from 'react';
 import {  Button, Grid, Paper, Typography } from "@mui/material";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const paperStyle={padding:20, height:'auto', width:400, margin:'50px auto'};
 const btnStyle={margin:'8px 0'};
@@ -59,7 +59,7 @@ const DeleteProfile=()=>{
         </Typography>
         </div>
         <Button type="submit" color="error" variant="contained" fullWidth style={btnStyle}>Delete Account</Button>
-        <Button href={"profile"} color="primary" variant="contained" fullWidth style={btnStyle}>Go Back</Button>
+        <Link to='/dashboard/myprofile' style={{textDecoration:'none'}}> <Button  color="primary" variant="contained" fullWidth style={btnStyle}>Go Back</Button></Link>
         </form>
         
       </Paper>

@@ -1,7 +1,9 @@
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 import { useEffect,useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import Logout from "./Logout";
+import MyProfile from "./MyProfile";
 import Profile from "./Profile";
 import UpdateProfile from "./UpdateProfile";
 import DeleteProfile from "./DeleteProfile";
@@ -13,6 +15,11 @@ import MainPageRental from "./rental-management/MainPageRental";
 import HomePage from "./rental-management/HomePage";
 import SingleUserRentals from "./rental-management/SingleUserRentals";
 
+import AddSale from "./sale/AddSale";
+import SaleList from "./sale/SaleList";
+import MainPageSale from "./sale/main";
+import AdminSettings from "./AdminSettings";
+
 const Dashboard=()=>{
     const [username, setusername] = useState([]);
 
@@ -23,22 +30,33 @@ const Dashboard=()=>{
         if (!loggedInUser){
         window.location = "/signin"
         }else{
-            const username = (JSON.parse(loggedInUser)).toUpperCase();
+            const username = (JSON.parse(loggedInUser));
             setusername(username);
         }
 
     },[])
 
     return(
-        <div>
+
+
+        <div style={{ backgroundImage: `url("http://www.webdesignhot.com/wp-content/uploads/2016/10/Gradient-Blue-Color-and-Triangle-Polygon-Pattern-Background.jpg")`,backgroundSize: 'cover',backgroundRepeat:'no-repeat',
+        width: '100vw',
+        height: '100vh'}} >
         <NavBar name={username}/>
             {/* <h1>Dashboard</h1> */}
 
             <Routes>
                 <Route path="/profile" element={<Profile />}/>
+                <Route path="/myprofile" element={<MyProfile />}/>
                 <Route path="/logout" element={<Logout/>}/>
                 <Route path="/updateprofile" element={<UpdateProfile/>}/>
                 <Route path="/deleteprofile" element={<DeleteProfile/>}/>
+                <Route path="/Admin%20Settings" element={<AdminSettings/>}/>
+
+                
+                <Route path="/addSale" element={<AddSale/>}/>
+                <Route path="/saleList" element={<SaleList/>}/>
+                <Route path="/main-page" element={<MainPageSale/>}/>
 
                 <Route path="/home-page" element={<HomePage/>}/>
                 <Route path="/single-rental" element={<SingleUserRentals/>}/>
@@ -52,7 +70,7 @@ const Dashboard=()=>{
                 {/* <Route path="/editprofile" element={<EditProfile/>}/> */}
 
             </Routes>
-
+        <Footer/>
         </div>
     )
 }

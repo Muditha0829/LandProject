@@ -1,7 +1,7 @@
 import {  Button, Grid, Link, Paper, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate} from 'react-router-dom';
-// import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
+import Footer from "../Footer";
 import axios from 'axios';
 import LoginNav from './LoginNav/LoginNav';
 import Box from '@mui/material/Box';
@@ -143,6 +143,7 @@ const SignUp=()=>{
         </Typography>
         </div>
       </Paper>
+      <Footer/>
     </Grid>
   );
 }
