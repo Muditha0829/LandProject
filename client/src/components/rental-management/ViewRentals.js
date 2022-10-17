@@ -100,9 +100,7 @@ function ViewRentals() {
             </Button>
             </DialogActions>
         </Dialog>
-
         <table id="table" style={{ marginTop: "20px" }}>
-        <button onClick={() => exportPDF()}>pdf</button>
             <thead>
                 <tr>
                     <th scope="col">heading</th>
@@ -138,6 +136,7 @@ function ViewRentals() {
         }
         </tbody>
         </table>
+        <Button sx={{ bgcolor: '#439df7', color: 'white', mt: 3 }} onClick={() => exportPDF()}>Download As Pdf</Button>
       </div>
     );
 }
