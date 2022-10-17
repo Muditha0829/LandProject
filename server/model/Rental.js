@@ -94,6 +94,11 @@ const RentalSchema = new Schema({
         required: true
     },
 
+    userID:{
+        type: String,
+        required: true
+    }
+
 })
 
 const rental = mongoose.model("rental", RentalSchema);

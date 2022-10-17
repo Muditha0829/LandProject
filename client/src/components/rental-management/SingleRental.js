@@ -27,6 +27,8 @@ import {
     MenuItem,
   } from "@mui/material";
   import { Stack } from "@mui/system";
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
   
   // const paperStyle={padding:20, height:'auto', width:"80%", margin:'50px auto'};
   // const textStyle={margin:'0px 0px 20px 0px'};
@@ -38,6 +40,17 @@ import {
   
   const SingleRental = () => {
     const navigate = useNavigate();
+
+    const rentalType = [
+      'House',
+      'Apartment',
+      'Land',
+      'Commercial',
+      'Bungalow',
+      'Vlla',
+      'Annexe',
+      'Rooms'
+    ]
   
     const [rental, setRental] = useState({
       type: "",
@@ -57,7 +70,8 @@ import {
       noOfDay: "",
       priceForeign: "",
       perMonth: "",
-      availability: ""
+      availability: "",
+      userID: ""
     });
   
     const {
@@ -78,7 +92,8 @@ import {
       priceForeign,
       perMonth,
       availability,
-      owner
+      owner,
+      userID
     } = rental;
 
     const { id } = useParams();
@@ -108,6 +123,7 @@ import {
   
     return (
       <Paper sx={{ mt: 4, mx: 4, p: 2, bgcolor: "#e1e6f5" }}>
+        <ToastContainer position={"top-center"}/>
         <form onSubmit={e => onSubmit(e)}>
           <Grid>
             <Typography textAlign="center" sx={{ mb: 4 }} variant="h3">
@@ -130,10 +146,15 @@ import {
                     name="type"
                     value={type}
                     label="Type"
-                    
+                    onChange={handleChange}
                   >
-                    <MenuItem value={"House"}>House</MenuItem>
-                    <MenuItem value={"Apartment"}>Apartment</MenuItem>
+                    {
+                      rentalType.map((rType) => {
+                        return(
+                          <MenuItem value={rType} key={rType}>{rType}</MenuItem>
+                        )
+                      })
+                    }
                   </Select>
                 </FormControl>
               </Box>

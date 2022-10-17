@@ -1,9 +1,7 @@
 import {
     Button,
-    Checkbox,
     Divider,
     Grid,
-    Link,
     Paper,
     TextareaAutosize,
     TextField,
@@ -11,14 +9,13 @@ import {
   } from "@mui/material";
   import React, { useEffect, useState } from "react";
   import { useNavigate, useParams } from "react-router-dom";
-  // import Logo from './../../images/SignIn&SignUp/sliit_logo.png';
   import axios from "axios";
-  // import LoginNav from './LoginNav/LoginNav';
   import Box from "@mui/material/Box";
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
   
   import {
     FormControl,
-    FormLabel,
     RadioGroup,
     Radio,
     FormControlLabel,
@@ -26,15 +23,18 @@ import {
     Select,
     MenuItem,
   } from "@mui/material";
-  import { Stack } from "@mui/system";
-  
-  // const paperStyle={padding:20, height:'auto', width:"80%", margin:'50px auto'};
-  // const textStyle={margin:'0px 0px 20px 0px'};
-  // const btnStyle={margin:'8px 0'};
-  // const bottomText={margin:'10px 0px 10px 0px'};
-  // const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",
-  //                   backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"
-  //                 };
+import { checkValidation } from "./Validation";
+
+  const rentalType = [
+    'House',
+    'Apartment',
+    'Land',
+    'Commercial',
+    'Bungalow',
+    'Vlla',
+    'Annexe',
+    'Rooms'
+  ]
   
   const UpdateRental = () => {
     const navigate = useNavigate();
@@ -102,16 +102,22 @@ import {
   
     const onSubmit = async e => {
       e.preventDefault();
-      // const valid = formValidation();    
-      await axios.put('http://localhost:4500/rental/' + id, rental).then(() => {
+      if("clear" != checkValidation(rental)){
+        toast.error(checkValidation(rental));
+      }else{
+        await axios.put('http://localhost:4500/rental/' + id, rental).then(() => {
+          toast.success("Rental Ad successfully Updated.");
           alert("Rental Updated successfully");
+          navigate("/dashboard/all-rental");
       }).catch((err) => {
           alert(err);
-      })                   
+      })   
+      }                     
     }
   
     return (
       <Paper sx={{ mt: 4, mx: 4, p: 2, bgcolor: "#e1e6f5" }}>
+        <ToastContainer position={"top-center"}/>
         <form onSubmit={e => onSubmit(e)}>
           <Grid>
             <Typography textAlign="center" sx={{ mb: 4 }} variant="h3">
@@ -136,8 +142,13 @@ import {
                     label="Type"
                     onChange={handleChange}
                   >
-                    <MenuItem value={"House"}>House</MenuItem>
-                    <MenuItem value={"Apartment"}>Apartment</MenuItem>
+                    {
+                    rentalType.map((rType) => {
+                      return(
+                        <MenuItem value={rType} key={rType}>{rType}</MenuItem>
+                      )
+                    })
+                  }
                   </Select>
                 </FormControl>
               </Box>

@@ -10,6 +10,8 @@ import { Container } from "@mui/system";
 import { Divider, Grid, Pagination } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomePage = () => {
 
@@ -25,6 +27,7 @@ const HomePage = () => {
 
     return (
         <Container maxWidth="xl" sx={{ justifyContent: "center" }}>
+            <ToastContainer position={"top-center"}/>
 
             <center>
                 <Typography sx={{ pt: 4, color: "darkblue" }} variant="h4" component="h2">Rental Home Page</Typography>

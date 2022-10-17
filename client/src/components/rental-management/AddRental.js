@@ -15,6 +15,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 // import LoginNav from './LoginNav/LoginNav';
 import Box from "@mui/material/Box";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import {
   FormControl,
@@ -27,6 +29,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { Stack } from "@mui/system";
+import validation, { checkValidation } from "./Validation";
 
 // const paperStyle={padding:20, height:'auto', width:"80%", margin:'50px auto'};
 // const textStyle={margin:'0px 0px 20px 0px'};
@@ -35,6 +38,16 @@ import { Stack } from "@mui/system";
 // const errorMsg = {width:"auto", padding: "15px", margin:"5px 0",fontSize: "15px",
 //                   backgroundColor:"#f34646",color:"white",textAlign:"center", borderRadius:"4px"
 //                 };
+const rentalType = [
+  'House',
+  'Apartment',
+  'Land',
+  'Commercial',
+  'Bungalow',
+  'Vlla',
+  'Annexe',
+  'Rooms'
+]
 
 const AddRental = () => {
   const navigate = useNavigate();
@@ -57,7 +70,8 @@ const AddRental = () => {
     noOfDay: "",
     priceForeign: "",
     perMonth: "",
-    availability: ""
+    availability: "",
+    userID: localStorage.getItem('userID')
   });
 
   const {
@@ -78,7 +92,8 @@ const AddRental = () => {
     priceForeign,
     perMonth,
     availability,
-    owner
+    owner,
+    userID
   } = rental;
 
   const handleChange = (e) => {
@@ -87,17 +102,21 @@ const AddRental = () => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    // const valid = formValidation();    
-    await axios.post('http://localhost:4500/rental/', rental).then(() => {
-        alert("Rental added successfully");
+    if("clear" != checkValidation(rental)){
+      toast.error(checkValidation(rental));
+    }else{
+      await axios.post('http://localhost:4500/rental/', rental).then(() => {
+        console.log("Rental Ad successfully Added.");
         window.location = "all-rental";
-    }).catch((err) => {
-        alert(err);
-    })                   
+      }).catch((err) => {
+          alert(err);
+      });  
+    }                     
   }
 
   return (
     <Paper sx={{ mt: 4, mx: 4, p: 2, bgcolor: "#e1e6f5" }}>
+      <ToastContainer position={"top-center"}/>
       <form onSubmit={e => onSubmit(e)}>
         <Grid>
           <Typography textAlign="center" sx={{ mb: 4 }} variant="h3">
@@ -122,8 +141,13 @@ const AddRental = () => {
                   label="Type"
                   onChange={handleChange}
                 >
-                  <MenuItem value={"House"}>House</MenuItem>
-                  <MenuItem value={"Apartment"}>Apartment</MenuItem>
+                  {
+                    rentalType.map((rType) => {
+                      return(
+                        <MenuItem value={rType} key={rType}>{rType}</MenuItem>
+                      )
+                    })
+                  }
                 </Select>
               </FormControl>
             </Box>
@@ -144,7 +168,7 @@ const AddRental = () => {
                 type="text"
                 name="town"
                 fullWidth
-                required
+                
                 value={town}
                 onChange={handleChange}
               />
@@ -166,7 +190,7 @@ const AddRental = () => {
                 type="text"
                 name="street"
                 fullWidth
-                required
+                
                 value={street}
                 onChange={handleChange}
               />
@@ -188,7 +212,7 @@ const AddRental = () => {
                 type="text"
                 name="heading"
                 fullWidth
-                required
+                
                 value={heading}
                 onChange={handleChange}
               />
@@ -241,7 +265,7 @@ const AddRental = () => {
                     type="text"
                     name="floorArea"
                     fullWidth
-                    required
+                    
                     value={floorArea}
                     onChange={handleChange}
                   />
@@ -262,7 +286,7 @@ const AddRental = () => {
                     type="text"
                     name="nearBus"
                     fullWidth
-                    required
+                    
                     value={nearBus}
                     onChange={handleChange}
                   />
@@ -283,7 +307,7 @@ const AddRental = () => {
                     type="text"
                     name="nearTrain"
                     fullWidth
-                    required
+                    
                     value={nearTrain}
                     onChange={handleChange}
                   />
@@ -315,7 +339,7 @@ const AddRental = () => {
                 type="text"
                 name="minTerm"
                 fullWidth
-                required
+                
                 value={minTerm}
                 onChange={handleChange}
               />
@@ -337,7 +361,7 @@ const AddRental = () => {
                 type="text"
                 name="PriceRS"
                 fullWidth
-                required
+                
                 value={PriceRS}
                 onChange={handleChange}
               />
@@ -374,7 +398,7 @@ const AddRental = () => {
                   type="text"
                   name="priceForeign"
                   fullWidth
-                  required
+                  
                   value={priceForeign}
                   onChange={handleChange}
                 />
@@ -474,7 +498,7 @@ const AddRental = () => {
                 type="text"
                 name="name"
                 fullWidth
-                required
+                
                 value={name}
                 onChange={handleChange}
               />
@@ -496,7 +520,7 @@ const AddRental = () => {
                 type="text"
                 name="email"
                 fullWidth
-                required
+                
                 value={email}
                 onChange={handleChange}
               />
@@ -518,7 +542,7 @@ const AddRental = () => {
                 type="text"
                 name="number"
                 fullWidth
-                required
+                
                 value={number}
                 onChange={handleChange}
               />
@@ -538,8 +562,9 @@ const AddRental = () => {
             <Button variant="contained" type="submit">Submit</Button>
           </Box>
         </Grid>
-      </form>
+      </form><button onClick={(e) => onSubmit(e)}>test</button>
     </Paper>
+    
   );
 };
 

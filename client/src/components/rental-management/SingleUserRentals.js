@@ -4,8 +4,11 @@ import React, { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleUserRentals = () => {
 
@@ -16,7 +19,7 @@ const SingleUserRentals = () => {
     }, []);
 
     const loadData = async () => {
-        await axios.get("http://localhost:4500/rental").then((res) => {
+        await axios.get("http://localhost:4500/rental/my/" + localStorage.getItem('userID')).then((res) => {
             setMyRentals(res.data);
         })
     }
@@ -41,6 +44,7 @@ const SingleUserRentals = () => {
 
     return(
         <div>
+            <ToastContainer position={"top-center"}/>
             <Dialog
                 open={open}
                 onClose={onCancel}
@@ -83,7 +87,9 @@ const SingleUserRentals = () => {
                                         </Grid>
                                         <Grid item xs={2} >
                                             <Typography sx={{ float: "right" }}>
-                                                <ArrowDropUpIcon/>
+                                                <Link to={`/dashboard/single-rental/${myrent._id}`}>
+                                                    <MoreVertIcon/>
+                                                </Link>
                                             </Typography>
                                         </Grid>
                                     </Grid>

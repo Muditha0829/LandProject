@@ -5,10 +5,12 @@ import Button from '@mui/material/Button';
 import axios from 'axios';
 import './styles.css';
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import jsPDF from 'jspdf';
+import "jspdf-autotable";
 
 function ViewRentals() {
-    
-
     const [tableData, setTableData] = useState([]);
     const [rentalID, setRentalID] = useState();
 
@@ -41,8 +43,41 @@ function ViewRentals() {
         setOpen(false);
     }
 
+    const exportPDF = () => {
+        const unit = "pt";
+        const size = "A4";
+        const orientation = "portrait";
+    
+        const marginLeft = 20;
+        const doc = new jsPDF(orientation, unit, size);
+    
+        doc.setFontSize(12);
+    
+        const title = "Rental Data Report";
+        const headers = [["Type", "Town", "Number", "Availability", "Owner"]];
+    
+        const data = tableData.map(data=> [ 
+                        data.type, 
+                        data.town, 
+                        data.number, 
+                        data.availability,
+                        data.owner
+                    ]);
+    
+        let content = {
+          startY: 50,
+          head: headers,
+          body: data,
+        };
+    
+        doc.text(title, marginLeft, 40);
+        doc.autoTable(content);
+        doc.save("Rental_data_report.pdf")
+      }
+
   return (
       <div>
+        <ToastContainer position={"top-center"}/>
 
         <Dialog
             open={open}
@@ -67,6 +102,7 @@ function ViewRentals() {
         </Dialog>
 
         <table id="table" style={{ marginTop: "20px" }}>
+        <button onClick={() => exportPDF()}>pdf</button>
             <thead>
                 <tr>
                     <th scope="col">heading</th>

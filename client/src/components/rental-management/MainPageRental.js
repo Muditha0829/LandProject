@@ -1,6 +1,8 @@
 import { Button, Grid, Paper, Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const MainPageRental = () => {
@@ -20,9 +22,14 @@ const MainPageRental = () => {
     const goSingleRental = () => {
         window.location = "single-rental";
     }
+    const goRentalReport = () => {
+        window.location = "rental-report";
+    }
+
 
     return(
         <div>
+            <ToastContainer position={"top-center"}/>
             <Stack sx={{ width: "100%", textAlign: "center", height: "450px", mt: "8%", bgcolor: "#e6e3e3" }}>
             <Grid sx={{mt: "40px" }}>
                     <Box>
@@ -53,7 +60,7 @@ const MainPageRental = () => {
                 </Grid>
 
                 <Grid>
-                    <Button sx={{ width: "500px", px: 6, py: 2, my: 1  }} variant="contained">
+                    <Button onClick={goRentalReport} sx={{ width: "500px", px: 6, py: 2, my: 1  }} variant="contained">
                     Generate Report
                         </Button>
                 </Grid>                

@@ -19,6 +19,7 @@ import AddSale from "./sale/AddSale";
 import SaleList from "./sale/SaleList";
 import MainPageSale from "./sale/main";
 import AdminSettings from "./AdminSettings";
+import GenerateReport from "./rental-management/GenerateReport";
 
 const Dashboard=()=>{
     const [username, setusername] = useState([]);
@@ -65,12 +66,13 @@ const Dashboard=()=>{
                 <Route path="/update-rental/:id" element={<UpdateRental/>}/>
                 <Route path="/single-rental/:id" element={<SingleRental/>}/>
                 <Route path="/Rentals" element={<MainPageRental/>}/>
+                <Route path="/rental-report" element={<GenerateReport/>}/>
 
                 {/* <Route path="/logout" element={<Logout />} /> */}
                 {/* <Route path="/editprofile" element={<EditProfile/>}/> */}
 
             </Routes>
-        <Footer/>
+        {/* <Footer/> */}
         </div>
     )
 }

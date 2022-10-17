@@ -25,6 +25,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.1",
     "nodemailer": "^6.7.4",
+    "react-apexcharts": "^1.4.0",
     "validation": "0.0.1"
   },
   "devDependencies": {

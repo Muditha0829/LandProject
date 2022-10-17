@@ -21,6 +21,8 @@ router.route("/").post((req, res) => {
     const perMonth = req.body.perMonth;
     const availability = req.body.availability;
     const owner = req.body.owner;
+    const userID = req.body.userID;
+
 
     const rental = new Rental({
         type,
@@ -40,7 +42,8 @@ router.route("/").post((req, res) => {
         priceForeign,
         perMonth,
         availability,
-        owner
+        owner,
+        userID
     });
 
     rental.save().then(() => {
@@ -92,7 +95,8 @@ router.route("/:id").put(async (req, res) => {
         priceForeign,
         perMonth,
         availability,
-        owner } = req.body;
+        owner,
+        userID } = req.body;
 
     const updateRental = {
         type,
@@ -112,7 +116,8 @@ router.route("/:id").put(async (req, res) => {
         priceForeign,
         perMonth,
         availability,
-        owner
+        owner,
+        userID
     };
 
     await Rental.findByIdAndUpdate(rentalid, updateRental)
@@ -131,8 +136,21 @@ router.route("/:id").get(async (req, res) => {
     await Rental.findById(rentalID).then((rental) => {
         res.json(rental);
     }).catch((err) => {
-        console.log(err.message);
-        res.status(500).send({status: "error with fetched rental data", error: error.message});
+        console.log(err);
+        res.status(500).send({status: "error with fetched rental data", err: err.message});
+    })
+})
+
+router.route("/my/:id").get(async (req, res) => {
+    let userID = req.params.id;
+
+    await Rental.find({
+        userID: userID
+    }).then((rental) => {
+        res.json(rental);
+    }).catch((err) => {
+        console.log(err);
+        res.status(500).send({status: "error with fetched rental data", err: err.message});
     })
 })
 
