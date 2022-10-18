@@ -56,30 +56,25 @@ router.route("/").get((req,res)=>{
 })
 
 
-router.route("/update").put(async (req, res)=>{
-    let saleID = req.query.groupID;    
-    let heading = req.body.heading;
-    let houseNumber = req.body.houseNumber;
-    let street = req.body.street;
-    let telephoneNumber = req.body.telephoneNumber;
-    let mobileNumber = req.body.mobileNumber;
-    let Description = req.body.Description;
-    let price = req.body.price;
+router.route("/update/:id").put(async (req, res)=>{
 
-    await Sale.findByIdAndUpdate(saleID, {
-        heading: heading,
-        houseNumber: houseNumber,
-        street: street,
-        telephoneNumber: telephoneNumber,
-        mobileNumber: mobileNumber,
-        Description: Description,
-        price: price
-    })
-    .then(()=>{
-        res.status(200).send({status:"Sale updated"})
-    }).catch((err)=>{
-        console.log(err);
-        res.status(500).send({status:"Error with updating data", error: err.message});
+    const {saleID,heading,houseNumber,street,telephoneNumber,mobileNumber,Description,price} = req.body;
+
+    const updateSale = {
+        saleID,
+        heading,
+        houseNumber,
+        street,
+        telephoneNumber,
+        mobileNumber,
+        Description,
+        price
+    }
+
+    const update = await Sale.findByIdAndUpdate(saleID,updateSale).then(()=>{
+        res.status(200).send({message:"Data Updated"})
+    }).catch((error)=>{
+        res.status(400).swnd({message:"Error with Updating data"+error})
     })
 })
 
@@ -112,16 +107,11 @@ router.route("/delete/:id").delete(async (req, res) => {
 
 
 
-
-router.route("/get/:id").get(async (req, res)=> {
-    let saleId = req.parms.id;
-    const sale = await Group.findById(saleId)
-    .then((Group) => {
-        res.status(200).send({status:"sale fetched", Sale})
+router.route("/:id").get(async (req, res)=> {
+    Sale.findById(req.params.id).then((sale)=>{
+        res.json(sale);
     }).catch((err)=>{
-        console.log(err.message);
-        res.status(500).send({status:"Error with get  sale", error: err.message});
-
+        res.json(err);
     })
 })
 

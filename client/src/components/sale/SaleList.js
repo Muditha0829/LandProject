@@ -87,16 +87,11 @@ function Salelist() {
 
   }
 
-
-
-
-    
-
   return (
       <div>
           
           <center><h3>Sale Table</h3></center>
-      <center>
+      
     <div style={{ height: 450, width: '95%' }}>
       <DataGrid
         getRowId={(row) => row._id}
@@ -106,7 +101,7 @@ function Salelist() {
         rowsPerPageOptions={[5]}
         // customToolbarSelect
       />
-    </div></center>
+    </div>
     </div>
   );
 }

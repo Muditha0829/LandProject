@@ -18,32 +18,16 @@ const fromun = {margin:'30px auto'};
 
 
     useEffect(()=>{
-
-
-        console.log(id+"update")
-
+        console.log(id)
         axios.get(`http://localhost:4500/sale/${id}`).then((res)=>{
       
            let sales = res.data;
-      
            setSale(sales)
-      
-           console.log(res.data)
-      
-      
-      
-      
+           console.log(sale)
       }).catch((err)=>{
-      
                alert(err.message)
-      
       })
-      
-      
-      
-      },[]
-      
-      )
+      },[] )
 
 
 
@@ -56,7 +40,7 @@ const fromun = {margin:'30px auto'};
         price: ""
     });
 
-    const { heading, city, telephoneNumber, mobileNumber, Description, price} = sale;
+    // const { heading, city, telephoneNumber, mobileNumber, Description, price} = sale;
 
 
     const onInputChange = e => {
@@ -68,7 +52,17 @@ const fromun = {margin:'30px auto'};
         e.preventDefault();        
         // const valid = formValidation();
         if(true){
-            await axios.put(`http://localhost:4500/sale/update/${id}`, ).then(() => {
+
+            const updateSale = {
+                "heading": sale.heading,
+                "city": sale.city,
+                "telephoneNumber": sale.telephoneNumber,
+                "mobileNumber": sale.mobileNumber,
+                "Description": sale.Description,
+                "price": sale.price
+            }
+
+            await axios.put(`http://localhost:4500/sale/update/${id}`, updateSale).then(() => {
                 alert("Sale Updated Successfully");
                 window.location = "/dashboard/saleList";
             }).catch((err) => {
@@ -77,70 +71,6 @@ const fromun = {margin:'30px auto'};
             history.push("/saleList");  
         }              
     }
-
-
-
-
-
-
-    // const [heading, setheading] = useState("");
-    // const [houseNumber, sethouseNumber] = useState("");
-    // const [street, setstreet] = useState("");
-    // const [city, setcity] = useState("");
-    // const [telephoneNumber, settelephoneNumber] = useState("");
-    // const [mobileNumber, setmobileNumber] = useState("");
-    // const [Description, setDescription] = useState("");
-    // const [price, setprice] = useState("");
-
-    
-    // const [userId, setuserId] = useState([]);
-
-    // function sendData(e){
-    //     e.preventDefault();
-
-        
-    //     const newsale ={
-            
-    //         heading,
-    //         houseNumber, 
-    //         street,
-    //         city,
-    //         telephoneNumber,
-    //         mobileNumber,
-    //         Description,
-    //         price
-    //     }
-        
-    //     axios.post("http://localhost:4500/sale/add",newsale).then(()=>{
-    //     alert("Sale Added")
-    //     window.location = "/dashboard/main-page";
-        
-    // }).catch((err)=>{
-    //     alert(err)
-    // })
-        
-    // }
-
-
-    
-    // useEffect(()=>{
-    //     // const loggedInUser = localStorage.getItem("username");
-    //     const userId = localStorage.getItem("userId");
-
-    //     if (!userId){
-    //     window.location = "/signin"
-    //     }else{
-    //         const username = (JSON.parse(userId));
-    //         console.log(username);
-    //         setuserId(username);
-    //         console.log(userId);
-
-    //     }
-
-        
-    // },[])
-
-
 
     return(
         <Grid >
@@ -153,38 +83,38 @@ const fromun = {margin:'30px auto'};
                         
                 <div style={fromun}>
                 
-                <TextField fullWidth label="Heading" id="heading"  className="form-control" style={textStyle} value={heading}/>
+                <TextField fullWidth label="Heading" name="heading"  className="form-control" style={textStyle} value={sale.heading} onChange={onInputChange} />
                 
                 
                 </div>
             
             
             <div style={fromun}>
-                    <TextField fullWidth label="City" id="city"  className="form-control" style={textStyle} value={city}/>
+                    <TextField fullWidth label="City" name="city"  className="form-control" style={textStyle} value={sale.city} onChange={onInputChange} />
             </div>      
 
 
                 <div style={fromun}>
-                    <TextField fullWidth label="Telephone Number" id="telephoneNumber" maxlength="10" placeholder="eg:-0112345678"    className="form-control" style={textStyle} value={telephoneNumber}/>
+                    <TextField fullWidth label="Telephone Number" name="telephoneNumber" maxlength="10" placeholder="eg:-0112345678"    className="form-control" style={textStyle} value={sale.telephoneNumber} onChange={onInputChange} />
                     
                 </div>
             
             
                 <div style={fromun}>
-                    <TextField fullWidth label="Mobile Number" id="mobileNumber" maxlength="10" placeholder="eg:-0712345678"    className="form-control" style={textStyle} value={mobileNumber} />
+                    <TextField fullWidth label="Mobile Number" name="mobileNumber" maxlength="10" placeholder="eg:-0712345678"    className="form-control" style={textStyle} value={sale.mobileNumber} onChange={onInputChange}  />
                     
                 </div>           
             
             
                 <div style={fromun}>
-                        <TextField fullWidth label="Description" id="Description"  className="form-control" style={textStyle} value={Description}/>
+                        <TextField fullWidth label="Description" name="Description"  className="form-control" style={textStyle} value={sale.Description} onChange={onInputChange} />
                         
                     
                 </div>           
             
             
             <div style={fromun}>
-                    <TextField fullWidth label="Price" id="price" placeholder="Rs."    className="form-control" style={textStyle} value={price}/>
+                    <TextField fullWidth label="Price" name="price" placeholder="Rs."    className="form-control" style={textStyle} value={sale.price} onChange={onInputChange} />
                 
             </div>           
                
