@@ -54,14 +54,15 @@ const fromun = {margin:'30px auto'};
     
     useEffect(()=>{
         // const loggedInUser = localStorage.getItem("username");
-        const loggedInUserId = localStorage.getItem("userId");
+        const userId = localStorage.getItem("userId");
 
-        if (!loggedInUserId){
+        if (!userId){
         window.location = "/signin"
         }else{
-            const username = (JSON.parse(loggedInUserId));
-            setuserId(userId);
+            const username = (JSON.parse(userId));
             console.log(username);
+            setuserId(username);
+            console.log(userId);
 
         }
 
@@ -88,6 +89,9 @@ const fromun = {margin:'30px auto'};
                     onChange={(e)=>{
 
                         setheading(e.target.value);
+                        // setuserId(localStorage.getItem("userId"));
+                        // console.log("userId")
+
 
                     }}/>
                 
