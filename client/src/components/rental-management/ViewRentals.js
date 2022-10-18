@@ -4,11 +4,12 @@ import { DataGrid } from '@mui/x-data-grid';
 import Button from '@mui/material/Button';
 import axios from 'axios';
 import './styles.css';
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, InputAdornment, TextField } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import jsPDF from 'jspdf';
 import "jspdf-autotable";
+import SearchIcon from '@mui/icons-material/Search';
 
 function ViewRentals() {
     const [tableData, setTableData] = useState([]);
@@ -21,10 +22,54 @@ function ViewRentals() {
     const loadData = async () => {
         await axios.get('http://localhost:4500/rental/').then((res) => {
             setTableData(res.data);
+            countData(res.data);
         }).catch((err) => {
             alert(err);
         })
     }
+
+    const [countPrice, setCountPrice] = useState(0);
+    const [allRental, setAllRental] = useState(0);
+    var data1 = 0;
+    var data2 = 0;
+
+    const countData = (data) => {
+        data1 = 0;
+        data.map((element) => {
+            data1 = data1 + parseInt(element.PriceRS);
+            data2 += 1;
+        })
+        setCountPrice(data1);
+        setAllRental(data2);
+    }
+
+    /**
+     * define search function
+     */
+
+     const [searchText, setSearchText] = useState('');
+
+     const handlesearchArea = value => {
+         setSearchText(value);
+         filterData(value);
+     }
+
+     
+ 
+     const filterData = value => {
+         const lowerCaseValue = value.toLowerCase().trim();
+         if(!lowerCaseValue){
+            loadData();
+         }
+         else{      
+             const filteredData = tableData.filter(item => {
+                 return Object.keys(item).some(key => {
+                     return item[key].toString().toLowerCase().includes(lowerCaseValue);
+                 })
+             });
+             setTableData(filteredData);
+         }
+     }
 
     const [open, setOpen] = useState(false); 
 
@@ -65,19 +110,27 @@ function ViewRentals() {
                     ]);
     
         let content = {
-          startY: 50,
+          startY: 90,
           head: headers,
           body: data,
         };
-    
-        doc.text(title, marginLeft, 40);
+        
+        doc.text("Summary price of all renals: " + countPrice + "\nAll Rentals: " + allRental, marginLeft, 20);
+        doc.text(title, marginLeft, 50);
         doc.autoTable(content);
-        doc.save("Rental_data_report.pdf")
+        doc.save("Rental_data_report.pdf");
       }
 
   return (
       <div>
         <ToastContainer position={"top-center"}/>
+
+        {/* <input type="text" onChange={ e => handlesearchArea(e.target.value)} placeholder="Search here..."/> */}
+        <TextField sx={{mt: 3}} InputProps={{startAdornment: (<InputAdornment position="stop">
+                                                                    <SearchIcon />
+                                                              </InputAdornment>
+                                                            )}} size="small" 
+            onChange={ e => handlesearchArea(e.target.value)} type="search" />
 
         <Dialog
             open={open}

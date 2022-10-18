@@ -5,7 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import img1 from "./Untitled.png";
+import img1 from "./Untitled.jpg";
 import { Container } from "@mui/system";
 import { Divider, Grid, Pagination } from "@mui/material";
 import { grey } from "@mui/material/colors";
