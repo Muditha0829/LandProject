@@ -57,11 +57,10 @@ router.route("/").get((req,res)=>{
 
 
 router.route("/update/:id").put(async (req, res)=>{
-
-    const {saleID,heading,houseNumber,street,telephoneNumber,mobileNumber,Description,price} = req.body;
+    let saleId  = req.params.id;
+    const {heading,houseNumber,street,telephoneNumber,mobileNumber,Description,price} = req.body;
 
     const updateSale = {
-        saleID,
         heading,
         houseNumber,
         street,
@@ -71,7 +70,7 @@ router.route("/update/:id").put(async (req, res)=>{
         price
     }
 
-    const update = await Sale.findByIdAndUpdate(saleID,updateSale).then(()=>{
+    const update = await Sale.findByIdAndUpdate(saleId,updateSale).then(()=>{
         res.status(200).send({message:"Data Updated"})
     }).catch((error)=>{
         res.status(400).swnd({message:"Error with Updating data"+error})

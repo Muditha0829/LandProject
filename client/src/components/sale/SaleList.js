@@ -19,7 +19,7 @@ const updateUpUser= (event,userId) =>{
 // }
 
 const columns = [
-{ field: 'SaleId', headerName: 'Sale ID', width: 200 },
+{ field: '_id', headerName: 'Sale ID', width: 200 },
   { field: 'heading', headerName: 'heading', width: 260 },
   { field: 'street', headerName: 'Street', width: 170 },
   { field: 'city', headerName: 'City', width: 170 },

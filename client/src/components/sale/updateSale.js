@@ -13,8 +13,9 @@ const fromun = {margin:'30px auto'};
 
  function UpdateSale(){
 
-    let history = useNavigate();
     const { id } = useParams();
+
+  const [error,setError] = useState("")
 
 
     useEffect(()=>{
@@ -51,8 +52,8 @@ const fromun = {margin:'30px auto'};
     const onSubmit = async e => {
         e.preventDefault();        
         // const valid = formValidation();
-        if(true){
 
+        try{
             const updateSale = {
                 "heading": sale.heading,
                 "city": sale.city,
@@ -61,15 +62,24 @@ const fromun = {margin:'30px auto'};
                 "Description": sale.Description,
                 "price": sale.price
             }
-
+            console.log(updateSale);
+    
             await axios.put(`http://localhost:4500/sale/update/${id}`, updateSale).then(() => {
                 alert("Sale Updated Successfully");
                 window.location = "/dashboard/saleList";
-            }).catch((err) => {
-                alert(err);
             })
-            history.push("/saleList");  
-        }              
+            
+            
+          }catch(error){
+            console.log(error)
+            if(
+              error.response &&
+              error.response.status >=400 &&
+              error.response.status <=500
+            ){
+              setError(error.response.data.message);
+            }
+          }             
     }
 
     return(

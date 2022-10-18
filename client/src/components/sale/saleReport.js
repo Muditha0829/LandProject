@@ -58,8 +58,8 @@ function Salelist() {
         </div>
           
           <center><h3>Sale Table</h3></center>
-      <center>
-    <div style={{ height: 700, width: '70%' }}>
+      
+    <div style={{ height: 700, width: '100%' }}>
       <DataGrid
         getRowId={(row) => row._id}
         rows={tableData}
@@ -68,7 +68,7 @@ function Salelist() {
         rowsPerPageOptions={[50]}
         // customToolbarSelect
       />
-    </div></center>
+    </div>
     </div>
   );
 }
