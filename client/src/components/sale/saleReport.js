@@ -19,56 +19,11 @@ const updateUpUser= (event,userId) =>{
 // }
 
 const columns = [
-{ field: 'SaleId', headerName: 'Sale ID', width: 200 },
   { field: 'heading', headerName: 'heading', width: 260 },
   { field: 'street', headerName: 'Street', width: 170 },
   { field: 'city', headerName: 'City', width: 170 },
   { field: 'telephoneNumber', headerName: 'Tel Number', width: 170 },
-  { field: 'price', headerName: 'Price', width: 170 },
-  {
-    headerName:"Update sale",
-    field: "Edit",
-    width: 120,
-    renderCell: (cellValues) => {
-      return (
-        <div>
-            <Link to={`update-sale/${cellValues.row._id}`}>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={(event) => {
-            updateUpUser(event, cellValues.row.role,cellValues.row._id);
-            console.log(cellValues.row._id)
-          }}>
-              Update
-        </Button></Link>
-        </div>
-
-      );
-    }
-  },{
-    headerName:"Delete sale",
-    field: "Delete",
-    width: 120,
-    renderCell: (cellValues) => {
-      return (
-        <Button
-          variant="contained"
-          color="error"
-          onClick={(event) => {
-            axios.delete(`http://localhost:4500/sale/delete/${cellValues.row._id}`).then((res)=>{
-              alert("Deleted");
-              window.location = "/dashboard/saleList";
-            }).catch((err)=>{
-                alert(err.message)
-            })
-          }}
-        >
-          Delete
-        </Button>
-      );
-    }
-  }
+  { field: 'price', headerName: 'Price', width: 170 }
 
 ];
 
@@ -94,16 +49,23 @@ function Salelist() {
 
   return (
       <div>
+        <div style={{ height: 10, width: '95%' }}></div>
+        <div>
+          <Button variant="contained" color="success" onclick={ window.print()}>
+            Report
+          </Button>
+          
+        </div>
           
           <center><h3>Sale Table</h3></center>
       <center>
-    <div style={{ height: 450, width: '95%' }}>
+    <div style={{ height: 700, width: '70%' }}>
       <DataGrid
         getRowId={(row) => row._id}
         rows={tableData}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={50}
+        rowsPerPageOptions={[50]}
         // customToolbarSelect
       />
     </div></center>

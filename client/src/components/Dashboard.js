@@ -12,6 +12,8 @@ import AddSale from "./sale/AddSale";
 import SaleList from "./sale/SaleList";
 import MainPageSale from "./sale/main";
 import AdminSettings from "./AdminSettings";
+import SaleReport from "./sale/saleReport";
+import UpdateSale from "./sale/updateSale";
 
 const Dashboard=()=>{
     const [username, setusername] = useState([]);
@@ -50,6 +52,8 @@ const Dashboard=()=>{
                 <Route path="/addSale" element={<AddSale/>}/>
                 <Route path="/saleList" element={<SaleList/>}/>
                 <Route path="/main-page" element={<MainPageSale/>}/>
+                <Route path="/sale-report" element={<SaleReport/>}/>
+                <Route path="/saleList/update-sale/:id" element={<UpdateSale/>}/>
 
                 {/* <Route path="/logout" element={<Logout />} /> */}
                 {/* <Route path="/editprofile" element={<EditProfile/>}/> */}

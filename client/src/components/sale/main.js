@@ -28,7 +28,7 @@ const MainPageSale = () => {
 
                 <Grid>
                     <Button onClick={allSale} sx={{ width: "500px", px: 6, py: 2, my: 1 }} variant="contained">
-                    My Sales
+                    All Sales
                     </Button>
                 </Grid>
 
