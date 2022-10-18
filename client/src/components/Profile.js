@@ -20,7 +20,7 @@ const Profile=()=>{
 
         <Link to='/dashboard/myprofile' style={{textDecoration:'none'}}> <Button  color="primary" variant="contained" fullWidth style={btnStyle}>My Profile</Button></Link>
         <Link to='/dashboard/myrentals' style={{textDecoration:'none'}}> <Button href={"myrentals"} color="primary" variant="contained" fullWidth style={btnStyle}>My Rentals</Button></Link>
-        <Link to='/dashboard/...' style={{textDecoration:'none'}}> <Button href={"..."} color="primary" variant="contained" fullWidth style={btnStyle}>...</Button></Link>
+        <Link to='/dashboard/sale-page' style={{textDecoration:'none'}}> <Button href={"sale-page"} color="primary" variant="contained" fullWidth style={btnStyle}>Sales</Button></Link>
         <Link to='/dashboard' style={{textDecoration:'none'}}> <Button href={"/dashboard"} color="primary" variant="outlined" fullWidth style={btnStyle}>Go Back</Button></Link>
         
       </Paper>
