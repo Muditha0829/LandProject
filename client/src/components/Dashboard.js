@@ -51,7 +51,7 @@ const Dashboard=()=>{
                 
                 <Route path="/addSale" element={<AddSale/>}/>
                 <Route path="/saleList" element={<SaleList/>}/>
-                <Route path="/main-page" element={<MainPageSale/>}/>
+                <Route path="/sale-page" element={<MainPageSale/>}/>
                 <Route path="/sale-report" element={<SaleReport/>}/>
                 <Route path="/saleList/update-sale/:id" element={<UpdateSale/>}/>
 

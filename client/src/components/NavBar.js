@@ -27,7 +27,7 @@ const NavBar = ({name}) => {
         const userRole = JSON.parse(loggedInUserRole);
         console.log(userRole)
 
-const pages = ['Profile', 'Rentals'];
+const pages = ['Profile', 'Rentals' , 'sale-page'];
 const settings = ['Profile', 'Dashboard', 'Logout',`${(userRole)==='SystemUser' ? 'Admin Settings' : ''}`];
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
