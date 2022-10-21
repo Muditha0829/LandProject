@@ -151,7 +151,7 @@ const AddCourse = () => {
             return "Email Is Invalid."
         } 
         if(data.mobile == "" || !/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i.test(data.mobile)){
-            return "Mobile Number Invalid."
+            return "Mobile Number Is Invalid."
         }  
         if (data.iName === ""){
             return "Image name cannot be Null";
