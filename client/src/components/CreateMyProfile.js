@@ -136,7 +136,7 @@ const CreateMyProfile = () => {
             return "Home Address cannot be Null";
         }
         if(data.mobile == "" || !/^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/i.test(data.mobile)){
-            return "Mobile Number Invalid."
+            return "Mobile Number Is Invalid."
         } 
         
         if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(data.email)){
