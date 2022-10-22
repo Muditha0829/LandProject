@@ -167,26 +167,18 @@ const fromun = {margin:'30px auto'};
 
 
                 <div style={fromun}>
-                    <TextField fullWidth label="Telephone Number" id="telephoneNumber" maxlength="10" placeholder="eg:-0112345678"   required className="form-control"
+                    <TextField fullWidth label="Telephone Number" id="telephoneNumber"  inputProps={{ maxLength: 10 }} placeholder="eg:-0112345678"   required className="form-control"
                     onChange={(e)=>{
 
                         settelephoneNumber(e.target.value);
 
                     }}/>
-
-                    {/* <label style={text} for="name">Tel Number    :---</label>
-                    <input style={textStyle} type="text"  id="telephoneNumber" maxlength="10" placeholder="eg:-0112345678"   required className="form-control"
-                    onChange={(e)=>{
-
-                        settelephoneNumber(e.target.value);
-
-                    }}/> */}
                     
                 </div>
             
             
                 <div style={fromun}>
-                    <TextField fullWidth label="Mobile Number" id="mobileNumber" maxlength="10" placeholder="eg:-0712345678"   required className="form-control"
+                    <TextField fullWidth label="Mobile Number" id="mobileNumber" inputProps={{ maxLength: 10 }}placeholder="eg:-0712345678"   required className="form-control"
                     onChange={(e)=>{
 
                         setmobileNumber(e.target.value);

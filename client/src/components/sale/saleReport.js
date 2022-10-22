@@ -51,7 +51,11 @@ function Salelist() {
       <div>
         <div style={{ height: 10, width: '95%' }}></div>
         <div>
+
           <Button variant="contained" color="success" onclick={ window.print()}>
+
+          <Button variant="contained" color="success" onClick={ window.print()}>
+
             Report
           </Button>
           

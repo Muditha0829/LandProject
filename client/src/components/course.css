@@ -1,0 +1,114 @@
+.form-group{
+    margin-bottom: 20px;
+    background-color: #e6e6e6;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .dropzone{
+    border: 3px dashed rgba(0,0,0,.1);
+  }
+  .dropzone i{
+    font-size: 28px;
+    color: #848486;
+  }
+  .dropzone .dropzone-msg-title{
+    margin: 20px 0 5px;
+    color: #848486;
+  }
+  .dropzone .dropzone-msg-desc{
+    color: #848486;
+    margin: 0;
+  }
+
+  /* Dropzone */
+.dropzone{
+    border: 1px dashed rgba(0,0,0,.1);
+    min-height: 150px;
+      background: white;
+      padding: 20px 20px;
+      border-radius: 0;
+  }
+  .dropzone:focus{
+    outline: none;
+  }
+  .dropzone .dz-message {
+    text-align: center;
+    margin: 2em 0;
+  }
+  .dropzone i{
+    font-size: 28px;
+    color: #848486;
+  }
+  .dropzone .dropzone-msg-title{
+    margin: 20px 0 5px;
+    color: #848486;
+  }
+  .dropzone .dropzone-msg-desc{
+    color: #848486;
+    margin: 0;
+  }
+  .dropzone .dropzone-msg-desc{
+    color: #848486;
+    margin: 0;
+  }
+
+  .thumbsContainer{
+    display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 16px;
+  }
+  .thumbsContainer .thumb{
+    display: inline-flex;
+      border-radius: 2px;
+      border: 1px solid #eaeaea;
+      margin-bottom: 8px;
+      margin-right: 8px;
+      width: 100px;
+      height: 100px;
+      padding: 4px;
+      box-sizing: border-box;
+  }
+  .thumbsContainer .thumb .thumbInner{
+    display: flex;
+      min-width: 0px;
+      overflow: hidden;
+  }
+  .thumbsContainer .thumb .thumbInner img{
+    display: block;
+      width: auto;
+      height: 100%;
+  }
+
+  .acr-form-notice{
+    display: block;
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 5px;
+    color: #848486;
+  }
+
+  .custom-control-input:focus ~ .custom-control-label::before {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .custom-radio .custom-control-input:checked ~ .custom-control-label::before,
+  .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before{
+    background-color: #519fff;
+    border-color: #519fff;
+  }
+  .custom-control label{
+    line-height: 23px;
+  }
+  .acr-form-notice{
+    display: block;
+    font-size: 13px;
+    line-height: 20px;
+    margin-top: 5px;
+    color: #848486;
+  }
+  .custom-switch .custom-control-input:checked~.custom-control-label::before{
+    background-color: #30ca71;
+    border-color: #30ca71;
+  }

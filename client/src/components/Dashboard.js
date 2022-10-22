@@ -25,6 +25,10 @@ import GenerateReport from "./rental-management/GenerateReport";
 import SaleReport from "./sale/saleReport";
 import UpdateSale from "./sale/updateSale";
 
+
+
+
+
 const Dashboard=()=>{
     const [username, setusername] = useState([]);
 
