@@ -29,9 +29,13 @@ const NavBar = ({name}) => {
 
 
 
+const pages = ['Profile', 'Rentals' , 'sale-page'];
+
+
 
 
 const pages = ['Profile', 'Rentals' , 'sale-page'];
+
 
 const settings = ['Profile', 'Dashboard', 'Logout',`${(userRole)==='SystemUser' ? 'Admin Settings' : ''}`];
 
